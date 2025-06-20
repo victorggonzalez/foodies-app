@@ -1,0 +1,6 @@
+
+initdb.js
+meals.db
+node_modules
+.DS_Store
+*.next
