@@ -2,6 +2,16 @@
 
 A modern food recipe sharing platform built with Next.js that allows users to discover, share, and manage meal recipes within a community-driven environment.
 
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Usage](#usage)
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [Getting Started - Developers](#getting-started---developers)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Project Overview
 
 **NextLevel Foodies** is a platform for food enthusiasts to share their favorite recipes with a global community. The application provides an intuitive interface for discovering new dishes, sharing personal recipes, and connecting with fellow food lovers. Built with modern web technologies, it offers a seamless experience for both recipe creators and food enthusiasts.
@@ -27,15 +37,13 @@ A modern food recipe sharing platform built with Next.js that allows users to di
 - Connect with other food enthusiasts
 - Participate in exclusive events and discussions
 
-### Key Features
+## Key Features
 - **Recipe Discovery**: Browse through a curated collection of meal recipes shared by the community
 - **Recipe Sharing**: Create and share your own recipes with detailed instructions, ingredients, and photos
 - **Image Upload**: Upload custom recipe images with built-in image picker functionality
 - **Community Features**: Connect with other food lovers and participate in the food sharing community
 - **Responsive Design**: Fully responsive interface that works across all devices
 - **Real-time Updates**: Dynamic content updates using Next.js App Router
-- **Search & Filter**: Easy navigation through recipe collections
-- **User Profiles**: Personal recipe management and sharing capabilities
 
 ## Tech Stack
 
