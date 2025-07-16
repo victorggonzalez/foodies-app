@@ -6,7 +6,7 @@ const MealsFormSubmit = () => {
   const { pending } = useFormStatus(); // gives us the status of the form if it is inside a form tag
 
   return (
-    <button type="submit" disabled={pending}>
+    <button type="submit" disabled={true}>
       {pending ? "Submitting..." : "Share meal"}
     </button>
   );
