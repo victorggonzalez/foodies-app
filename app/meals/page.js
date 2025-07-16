@@ -2,8 +2,7 @@ import Link from "next/link";
 import React, { Suspense } from "react";
 import styles from "./page.module.css";
 import MealsGrid from "../../components/meals/meals-grid";
-import { getMeal, getMeals } from "@/lib/meals";
-import { createClient } from "@/utils/supabase";
+import { getMeals } from "@/lib/meals-supabase";
 
 export const metadata = {
   title: "All meals",
@@ -11,12 +10,10 @@ export const metadata = {
 };
 
 async function Meals() {
-  // const dummyMeals = await getMeals();
-  const supabase = await createClient();
-  let { data: meals, error } = await supabase.from("meals").select("*");
+  const meals = await getMeals();
 
-    if (!meals) {
-    return <p>No meals found.</p>
+  if (!meals) {
+    return <p>No meals found.</p>;
   }
   return <MealsGrid meals={meals} />;
 }

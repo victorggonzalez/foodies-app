@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-import { getMeal, getMeals } from "@/lib/meals";
 import { notFound } from "next/navigation";
+import { getMeal } from "@/lib/meals-supabase";
 
 export async function generateMetadata({ params }) {
   const meal = await getMeal(params.mealSlug);
@@ -15,8 +15,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const MealDetailsPage = ({ params }) => {
-  const meal = getMeal(params.mealSlug);
+async function Meal({ params }) {
+  const meal = await getMeal(params.mealSlug);
 
   if (!meal) {
     notFound();
@@ -44,6 +44,16 @@ const MealDetailsPage = ({ params }) => {
           }}
         />
       </main>
+    </>
+  );
+}
+
+const MealDetailsPage = ({ params }) => {
+  return (
+    <>
+      <Suspense fallback={<p className={styles.loading}>Fetching meal...</p>}>
+        <Meal params={params} />
+      </Suspense>
     </>
   );
 };
