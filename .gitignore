@@ -1,4 +1,4 @@
-
+.vscode
 initdb.js
 meals.db
 node_modules

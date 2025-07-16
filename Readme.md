@@ -50,7 +50,7 @@ A modern food recipe sharing platform built with Next.js that allows users to di
 - **Development**: ESLint for code quality
 - **Deployment**: Vercel Platform
 
-## Getting Started - developers
+## Getting Started - Developers
 
 ### Installation
 
@@ -69,19 +69,63 @@ A modern food recipe sharing platform built with Next.js that allows users to di
 
 ### Database Setup
 
-The application supports both SQLite (for development) and Supabase (for production):
+The application supports Supabase (both for development & production):
 
-#### SQLite Setup (Development)
-The SQLite database (`meals.db`) is automatically created when you run the application for the first time.
+#### Supabase Setup
 
-#### Supabase Setup (Production)
-1. Create a Supabase project at [supabase.com](https://supabase.com)
-2. Configure your Supabase credentials in environment variables
+##### For Development
+1. Initialize Local Supabase Environment
    ```bash
-    NEXT_PUBLIC_SUPABASE_URL=<SUBSTITUTE_SUPABASE_URL>
-    NEXT_PUBLIC_SUPABASE_ANON_KEY=<SUBSTITUTE_SUPABASE_ANON_KEY>
+   npx supabase init
    ```
-3. Create tables based on the content of [supabase](./supabase/migrations/):
+2. Start Local Development Environment (using Docker)
+   ```bash
+   npx supabase start
+   ```
+3. Apply Database Migrations based on the content of [supabase](./supabase/migrations/):
+   ```bash
+   npx supabase migration up
+   ```
+4. Create a .env.local file with Supabase credentials in environment variables
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=<SUBSTITUTE_SUPABASE_URL>
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=<SUBSTITUTE_SUPABASE_ANON_KEY>
+   ```
+
+
+##### For Production
+1. Create a Supabase project at [supabase.com](https://supabase.com)
+2. Create a .env.prod file with your Supabase credentials in environment variables
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=<SUBSTITUTE_SUPABASE_URL>
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=<SUBSTITUTE_SUPABASE_ANON_KEY>
+   ```
+3. Link Your Local Project to Production:
+   ```bash
+   npx supabase login
+   npx supabase link --project-ref your-project-id
+   ```
+3. Deploy Database Schema to Production:
+   ```bash
+   npx supabase db push
+   ```
+
+### Database Schema Management
+When making database changes, follow this workflow:
+1. Create New Migration:
+   ```bash
+   npx supabase migration new add_feature_name
+   ```
+2. Edit Migration File: Add your SQL changes to the generated migration file
+3. Apply Migration Locally:
+   ```bash
+   npx supabase migration up
+   ```
+4. Test Changes: Verify everything works in your local environment
+5. Deploy to Production:
+   ```bash
+   npx supabase db push
+   ```
 
 ### Running the Application
 
